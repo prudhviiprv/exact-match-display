@@ -77,8 +77,8 @@ type State = {
 function step(s: State, dt: number, r: () => number) {
   s.elapsed += dt;
   s.phaseT += dt;
-  if (s.phaseT >= PHASES[s.phaseIdx].dur) { s.phaseT = 0; s.phaseIdx = (s.phaseIdx + 1) % PHASES.length; }
-  const phase = PHASES[s.phaseIdx].phase;
+  if (s.phaseT >= PHASES[s.phaseIdx]!.dur) { s.phaseT = 0; s.phaseIdx = (s.phaseIdx + 1) % PHASES.length; }
+  const phase = PHASES[s.phaseIdx]!.phase;
 
   for (const dir of ["N", "S", "E", "W"] as Direction[]) {
     if (r() < RATE[dir] * dt) {
@@ -127,8 +127,8 @@ function derive(s: State): SimSnapshot {
   const congestion: CongestionState = queueTotal >= 12 ? "heavy" : queueTotal >= 6 ? "moderate" : "free";
   return {
     vehicles: s.vehicles.map((v) => ({ ...v })),
-    phase: PHASES[s.phaseIdx].phase,
-    phaseRemaining: PHASES[s.phaseIdx].dur - s.phaseT,
+    phase: PHASES[s.phaseIdx]!.phase,
+    phaseRemaining: PHASES[s.phaseIdx]!.dur - s.phaseT,
     passed: { ...s.passed }, classCounts: { ...s.classCounts },
     density, queue, queueTotal, congestion, elapsed: s.elapsed,
   };

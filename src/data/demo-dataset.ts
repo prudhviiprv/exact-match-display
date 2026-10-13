@@ -52,7 +52,7 @@ function anchor() {
 function pick<T>(r: () => number, weighted: [T, number][]): T {
   let x = r();
   for (const [v, w] of weighted) { if ((x -= w) <= 0) return v; }
-  return weighted[weighted.length - 1][0];
+  return weighted[weighted.length - 1]![0];
 }
 
 /** Hour-of-day demand curve (morning + evening peaks). */
@@ -83,10 +83,10 @@ function buildAll(): { events: TrafficEvent[]; volume: VolumePoint[] } {
   for (let i = 0; i < 46; i++) {
     const type = pick(r, TYPE_WEIGHTS);
     const tpl = TEMPLATES[type];
-    const dir = DIRS[Math.floor(r() * 4)];
+    const dir = DIRS[Math.floor(r() * 4)]!;
     const ts = end - Math.floor(r() * 24 * HOUR);
-    const severity = tpl.sev[Math.floor(r() * tpl.sev.length)];
-    const zone = type === "pedestrian_conflict" ? "Z6" : type === "signal_fault" ? "Z5" : ZONE_FOR_DIR[dir];
+    const severity = tpl.sev[Math.floor(r() * tpl.sev.length)]!;
+    const zone = type === "pedestrian_conflict" ? "Z6" : type === "signal_fault" || type === "sensor_health" ? "Z5" : ZONE_FOR_DIR[dir];
     const age = end - ts;
     events.push({
       id: `EVT-${(4100 + i).toString()}`,

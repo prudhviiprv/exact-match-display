@@ -24,7 +24,7 @@ export function Intersection({ snap, overlay, className }: { snap: SimSnapshot; 
       <rect width="400" height="400" fill="var(--graphite)" />
       <rect width="400" height="400" fill="url(#g)" />
       {/* blocks */}
-      {[[0, 0], [240, 0], [0, 240], [240, 240]].map(([x, y]) => (
+      {([[0, 0], [240, 0], [0, 240], [240, 240]] as const).map(([x, y]) => (
         <rect key={`${x}${y}`} x={x + 8} y={y + 8} width={144} height={144} fill="var(--graphite-2)" stroke="var(--lane)" strokeOpacity="0.08" />
       ))}
       {/* roads */}
