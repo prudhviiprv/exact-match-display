@@ -65,7 +65,7 @@ function CommandCenter() {
     ZONES.forEach((z) => (m[z.id] = { n: 0, worst: null }));
     const rank = { info: 0, warning: 1, critical: 2 };
     events.forEach((e) => {
-      const z = m[e.zone]; z.n++;
+      const z = m[e.zone]; if (!z) return; z.n++;
       if (!z.worst || rank[e.severity] > rank[z.worst]) z.worst = e.severity;
     });
     return m;

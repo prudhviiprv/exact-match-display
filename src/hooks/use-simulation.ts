@@ -105,7 +105,7 @@ function step(s: State, dt: number, r: () => number) {
     lane.forEach((v, i) => {
       const half = CLASS_LEN[v.cls] / 2;
       let limit = Infinity;
-      if (i > 0) { const lead = lane[i - 1]; limit = lead.pos - CLASS_LEN[lead.cls] / 2 - half - 5; }
+      if (i > 0) { const lead = lane[i - 1]!; limit = lead.pos - CLASS_LEN[lead.cls] / 2 - half - 5; }
       if (!go && v.pos + half <= STOP_AT + 1) limit = Math.min(limit, STOP_AT - half);
       const next = Math.min(v.pos + v.speed * dt, limit);
       v.stopped = next - v.pos < v.speed * dt * 0.2;
