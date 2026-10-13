@@ -82,7 +82,7 @@ function Hero() {
   return (
     <section id="overview" ref={ref} className="dark grain relative flex min-h-[100svh] scroll-mt-14 items-end overflow-hidden bg-background text-foreground">
       <motion.img src={heroImg} alt="FlowGuard monitoring robot at a wet city intersection at night" width={1920} height={1088}
-        style={reduce ? undefined : { y }} className="absolute inset-0 h-full w-full object-cover object-[70%_center]" />
+        style={reduce ? {} : { y }} className="absolute inset-0 h-full w-full object-cover object-[70%_center]" />
       <div className="hero-fade absolute inset-0" />
       <div className="grid-lines absolute inset-0 opacity-60" />
       <div className="relative mx-auto w-full max-w-7xl px-5 pb-16 pt-32 md:pb-24">

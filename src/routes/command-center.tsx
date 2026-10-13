@@ -176,7 +176,7 @@ function CommandCenter() {
               <svg viewBox="0 0 100 100" className="mx-auto aspect-square w-full max-w-[260px]" role="group" aria-label="Zone map">
                 <rect x="38" y="0" width="24" height="100" fill="var(--asphalt)" /><rect x="0" y="38" width="100" height="24" fill="var(--asphalt)" />
                 {ZONES.map((z) => {
-                  const c = zoneCounts[z.id]; const active = zoneFilter === z.id;
+                  const c = zoneCounts[z.id] ?? { n: 0, worst: null }; const active = zoneFilter === z.id;
                   const fill = c.worst === "critical" ? "var(--crit)" : c.worst === "warning" ? "var(--warn)" : c.worst ? "var(--steel)" : "var(--graphite-3)";
                   return (
                     <g key={z.id} role="button" tabIndex={0} aria-label={`${z.name}: ${c.n} events`} aria-pressed={active}
