@@ -4,7 +4,7 @@ import type { CongestionState, Direction, SignalPhase, Vehicle, VehicleClass } f
 
 /** Geometry: viewBox 0..400. Each path is 440 long (−20 → 420). */
 export const PATH_LEN = 440;
-export const STOP_AT = 150; // distance where the stop line sits (approach end)
+export const STOP_AT = 168; // path distance of stop line (y=148 in svg)
 const CLASS_W: [VehicleClass, number][] = [["car", 0.68], ["truck", 0.1], ["bus", 0.07], ["motorcycle", 0.15]];
 export const CLASS_LEN: Record<VehicleClass, number> = { car: 16, truck: 24, bus: 28, motorcycle: 9 };
 const PHASES: { phase: SignalPhase; dur: number }[] = [

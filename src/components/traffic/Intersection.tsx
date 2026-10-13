@@ -42,7 +42,6 @@ export function Intersection({ snap, overlay, className }: { snap: SimSnapshot; 
       </g>
       {/* crosswalk NE */}
       <g fill="var(--lane)" fillOpacity="0.18">
-        {Array.from({ length: 6 }).map((_, i) => <rect key={i} x={244 + i * 0} y={164 + i * 12} width={0} height={0} />)}
         {Array.from({ length: 6 }).map((_, i) => <rect key={`c${i}`} x={164 + i * 12.5} y={128} width={7} height={18} />)}
       </g>
       {/* signal heads */}
